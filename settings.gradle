@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "FoodShop"
+include ':app'
+include ':core-navigation'
+include ':feature-shop'
+include ':core-android'
+include ':core-network'
+include ':feature-basket'
+include ':core-db'

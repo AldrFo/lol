@@ -1,0 +1,94 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.feature_shop'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    viewBinding{
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation project(":core-android")
+    implementation project(":core-network")
+    implementation project(":core-navigation")
+    implementation project(":core-db")
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //swipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    //viewModels
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+
+    //CircleImage
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    //dagger
+    def dagger_v = "2.13"
+    implementation "com.google.dagger:dagger:$dagger_v"
+    kapt "com.google.dagger:dagger-compiler:$dagger_v"
+
+    //rxJava
+    implementation "io.reactivex.rxjava3:rxjava:3.1.6"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //retrofit
+    def retro_v = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retro_v"
+    implementation "com.squareup.retrofit2:converter-gson:$retro_v"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retro_v"
+
+    //navigationComponent
+    def nav_version = "2.6.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //room
+    def room_version = "2.5.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
+
+}
